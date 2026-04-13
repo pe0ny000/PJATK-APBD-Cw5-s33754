@@ -1,0 +1,104 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+packages/
+!**/[Pp]ackages/build/
+
+# MSTest
+TestResult.xml
+TestResults/
+[Tt]est[Rr]esult*/
+
+# dotCover
+*.dotCover
+
+# dotnet CLI
+.dotnet/
+project.assets.json
+*.nuget.dgspec.json
+
+# ASP.NET Core
+wwwroot/lib/
+appsettings.Development.json
+
+# Entity Framework
+*.edmx.diagram
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Publish
+*.pubxml
+*.publishproj
+PublishScripts/
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+lcov.info
+
+# Secrets
+*.pfx
+*.p12
+secrets.json
+*.env
