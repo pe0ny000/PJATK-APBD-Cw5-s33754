@@ -35,14 +35,14 @@ public class RoomsControler : ControllerBase
         }
     ];
 
-    [HttpGet]
+    /*[HttpGet]
     public IActionResult GetAllRooms()
     {
         return Ok(rooms.Select(e => new RoomDto() { Id = e.Id, Name = e.Name }));
-    }
+    }*/
 
     [HttpGet]
-    [Route("{id:int}")]
+    [Route("/rooms/{id:int}")]
     public IActionResult GetRoomById(int id)
     {
         var room = rooms.FirstOrDefault(e => e.Id == id);
@@ -62,7 +62,7 @@ public class RoomsControler : ControllerBase
     }
 
 
-    [HttpGet("building/{buildingCode}")]
+    [HttpGet("/rooms/building/{buildingCode}")]
     public IActionResult GetRoomByBuildingCode(string buildingCode)
     {
         var roomsInBuilding = RoomsControler.rooms.Where(r => r.BuildingCode == buildingCode).ToList();
@@ -74,6 +74,7 @@ public class RoomsControler : ControllerBase
 
 
     [HttpGet]
+    [Route("/rooms")]
     public IActionResult GetRoomsFiltered(int? minCapacity, bool? hasProjector, bool? isActive)
     {
         var filteredRooms = RoomsControler.rooms.AsQueryable();
@@ -88,6 +89,7 @@ public class RoomsControler : ControllerBase
     }
 
     [HttpPost]
+    [Route("/rooms")]
     public IActionResult CreateRoom([FromBody] RoomDto room)
     {
         var newRoom = new Room()
@@ -104,7 +106,7 @@ public class RoomsControler : ControllerBase
         return CreatedAtAction(nameof(GetRoomById), new { id = newRoom.Id }, new RoomDto());
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("/rooms/{id}")]
     public IActionResult Update(int id, Room room)
     {
         var existing = RoomsControler.rooms.FirstOrDefault(r => r.Id == id);
@@ -123,7 +125,7 @@ public class RoomsControler : ControllerBase
     }
 
     [HttpDelete]
-    [Route("{id:int}")]
+    [Route("/rooms/{id:int}")]
     public IActionResult Delete(int id)
     {
         var room = rooms.FirstOrDefault(r => r.Id == id);

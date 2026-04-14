@@ -42,19 +42,20 @@ public class ReservationsController : ControllerBase
         },
     };
 
-    [HttpGet]
+    /*[HttpGet]
     public IActionResult GetAllReservations()
     {
         return Ok(reservations);
-    }
+    }*/
 
-    [HttpGet("{id}")]
+    [HttpGet("/reservations/{id}")]
     public IActionResult GetReservationById(int id)
     {
         return  Ok(reservations.FirstOrDefault(r => r.Id == id));
     }
 
     [HttpGet]
+    [Route("/reservations")]
     public IActionResult GetAll(DateOnly? date, string? status, int? roomId)
     {
         var filteredReservations = ReservationsController.reservations.AsQueryable();
@@ -73,7 +74,7 @@ public class ReservationsController : ControllerBase
 
 
     [HttpPut]
-    [Route("/api/reservations/{id}")]
+    [Route("/reservations/{id}")]
     public IActionResult Update(int id, Reservation reservation)
     {
         if (reservation.EndTime <= reservation.StartTime)
@@ -111,7 +112,7 @@ public class ReservationsController : ControllerBase
     }
     
     [HttpDelete]
-    [Route("/api/reservations/{id}")]
+    [Route("/reservations/{id}")]
     public IActionResult Delete(int id)
     {
         var reservation = ReservationsController.reservations.FirstOrDefault(r => r.Id == id);
