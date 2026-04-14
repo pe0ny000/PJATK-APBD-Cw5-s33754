@@ -38,7 +38,7 @@ public class RoomsControler : ControllerBase
     [HttpGet]
     public IActionResult GetAllRooms()
     {
-        return Ok(rooms.Select(e=>new RoomDto(){ Id= e.Id, Name = e.Name }));
+        return Ok(rooms.Select(e => new RoomDto() { Id = e.Id, Name = e.Name }));
     }
 
     [HttpGet]
@@ -48,7 +48,7 @@ public class RoomsControler : ControllerBase
         var room = rooms.FirstOrDefault(e => e.Id == id);
         if (room == null)
             return NotFound($"Room with id {id} not found");
-        
+
         return Ok(new RoomDto()
         {
             Id = room.Id,
@@ -108,7 +108,7 @@ public class RoomsControler : ControllerBase
     public IActionResult Update(int id, Room room)
     {
         var existing = RoomsControler.rooms.FirstOrDefault(r => r.Id == id);
-    
+
         if (existing == null)
             return NotFound($"Room with id {id} not found");
 
@@ -129,13 +129,8 @@ public class RoomsControler : ControllerBase
         var room = rooms.FirstOrDefault(r => r.Id == id);
         if (room == null)
             return NotFound($"Room at id {id} not found");
-        
+
         rooms.Remove(room);
         return NoContent();
     }
-
-
-
-
 }
-        

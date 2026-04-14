@@ -1,6 +1,46 @@
 @WebApplication1_HostAddress = http://localhost:5004
 
-GET {{WebApplication1_HostAddress}}/weatherforecast/
+### Pobierz wszystkie sale
+GET {{WebApplication1_HostAddress}}/api/rooms
 Accept: application/json
 
-###
+### Pobierz salę po id
+GET {{WebApplication1_HostAddress}}/api/rooms/1
+Accept: application/json
+
+### Pobierz sale z budynku A
+GET {{WebApplication1_HostAddress}}/api/rooms/building/A
+Accept: application/json
+
+### Filtrowanie po query stringu
+GET {{WebApplication1_HostAddress}}/api/rooms?minCapacity=20&hasProjector=true&activeOnly=true
+Accept: application/json
+
+### Dodaj nową salę
+POST {{WebApplication1_HostAddress}}/api/rooms
+Content-Type: application/json
+
+{
+  "name": "Lab 999",
+  "buildingCode": "C",
+  "floor": 2,
+  "capacity": 30,
+  "hasProjector": true,
+  "isActive": true
+}
+
+### Aktualizuj salę
+PUT {{WebApplication1_HostAddress}}/api/rooms/1
+Content-Type: application/json
+
+{
+  "name": "Lab 101 Updated",
+  "buildingCode": "A",
+  "floor": 1,
+  "capacity": 25,
+  "hasProjector": false,
+  "isActive": true
+}
+
+### Usuń salę
+DELETE {{WebApplication1_HostAddress}}/api/rooms/1
